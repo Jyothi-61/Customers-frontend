@@ -1,0 +1,15 @@
+ 
+<section class="deposit-container">
+  <h2>Deposit Funds</h2>
+ 
+  <form (ngSubmit)="depositFunds()" #depositForm="ngForm" class="deposit-form">
+    <div class="form-group">
+      <label for="amount">Amount</label>
+      <input type="number" name="amount" [(ngModel)]="amount" required placeholder="Enter amount to deposit" />
+    </div>
+ 
+    <button type="submit" [disabled]="depositForm.invalid">Deposit</button>
+    <p class="status-message">{{ statusMessage }}</p>
+  </form>
+</section>
+ 

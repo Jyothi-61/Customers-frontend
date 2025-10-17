@@ -1,0 +1,9 @@
+<form type="submit">
+  <label>To Account :</label>
+  <input [(ngModel)]="toAccountNumber" name="toAccountNumber" type="text"/>
+
+  <label>Amount:</label>
+  <input [(ngModel)]="amount" name="amount" type="number" placeholder="Enter amount to transfer" />
+
+  <button  (click)="transff()">SEND</button>
+</form>

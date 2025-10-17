@@ -1,0 +1,32 @@
+.transaction-history {
+  max-width: 600px;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', sans-serif;
+  color: #2c3e50;
+}
+
+.transaction-history p:first-child {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: left;
+  color: #34495e;
+}
+
+.transaction-history div {
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.5rem;
+  background-color: #f4f6f8;
+  border-left: 3px solid #3498db;
+  border-radius: 4px;
+}
+
+.transaction-history p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}

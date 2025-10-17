@@ -1,0 +1,85 @@
+<form (ngSubmit)="onSubmit()" #profileForm="ngForm" class="profile-form">
+  <h2>Create Profile</h2>
+
+  <!-- Personal Info -->
+  <div class="form-row">
+    <div class="form-group">
+      <label for="fullName">Full Name <span class="required">*</span></label>
+      <input type="text" name="fullName" [(ngModel)]="profile.fullName" #fullName="ngModel" required placeholder="Full Name" />
+      <div class="error" *ngIf="fullName.invalid && fullName.touched">Full Name is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email <span class="required">*</span></label>
+      <input type="email" name="email" [(ngModel)]="profile.email" #email="ngModel" required placeholder="Email" />
+      <div class="error" *ngIf="email.invalid && email.touched">Enter a valid email.</div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="phone">Phone <span class="required">*</span></label>
+      <input type="tel" name="phone" [(ngModel)]="profile.phone" #phone="ngModel" required pattern="^[0-9]{10}$" placeholder="Phone" />
+      <div class="error" *ngIf="phone.invalid && phone.touched">Enter a 10-digit phone number.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="dateOfBirth">Date of Birth</label>
+      <input type="date" name="dateOfBirth" [(ngModel)]="profile.dateOfBirth" />
+    </div>
+    
+  </div>
+
+  <!-- Address Info -->
+  <div class="form-row">
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input type="text" name="address" [(ngModel)]="profile.address" placeholder="Address" />
+    </div>
+
+    <div class="form-group">
+      <label for="city">City</label>
+      <input type="text" name="city" [(ngModel)]="profile.city" placeholder="City" />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="state">State</label>
+      <input type="text" name="state" [(ngModel)]="profile.state" placeholder="State" />
+    </div>
+
+    <div class="form-group">
+      <label for="country">Country</label>
+      <input type="text" name="country" [(ngModel)]="profile.country" placeholder="Country" />
+    </div>
+  </div>
+
+  <!-- Account Info -->
+  <!-- <div class="form-group">
+    <label for="kycStatus">KYC Status</label>
+    <select name="kycStatus" [(ngModel)]="profile.kycStatus">
+      <option value="PENDING">Pending</option>
+      <option value="VERIFIED">ACCEPTED</option>
+      <option value="REJECTED">Rejected</option>
+    </select>
+  </div> -->
+
+    <div class="form-group">
+      <label for="accountType">Account Type <span class="required">*</span></label>
+      <select name="accountType" [(ngModel)]="accountType" required #accountTypeRef="ngModel">
+        <option value="" disabled selected>Select Account Type</option>
+        <option value="CURRENT">Current</option>
+        <option value="SAVINGS">Savings</option>
+        <option value="CREDIT">Credit</option>
+      </select>
+      <div class="error" *ngIf="accountTypeRef.invalid && accountTypeRef.touched">Please select an account type.</div>
+    </div>
+  <div class="form-actions">
+  <button type="submit" [disabled]="profileForm.invalid">Create Profile</button>
+</div>
+<div *ngIf="submissionMessage" class="submission-banner">
+  {{ submissionMessage }}
+</div>
+
+</form>

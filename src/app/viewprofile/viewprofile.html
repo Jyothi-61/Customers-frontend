@@ -1,0 +1,20 @@
+ 
+<section class="profile-container" *ngIf="profile">
+  <h2>Profile</h2>
+ 
+  <div class="profile-card">
+    <div class="profile-row"><label>Full Name:</label><span>{{ profile.fullName }}</span></div>
+    <div class="profile-row"><label>Email:</label><span>{{ profile.email }}</span></div>
+    <div class="profile-row"><label>Phone:</label><span>{{ profile.phone }}</span></div>
+    <div class="profile-row"><label>Address:</label><span>{{ profile.address }}</span></div>
+    <div class="profile-row"><label>City:</label><span>{{ profile.city }}</span></div>
+    <div class="profile-row"><label>State:</label><span>{{ profile.state }}</span></div>
+    <div class="profile-row"><label>Country:</label><span>{{ profile.country }}</span></div>
+    <div class="profile-row"><label>Pincode:</label><span>{{ profile.pincode }}</span></div>
+    <div class="profile-row"><label>Date of Birth:</label><span>{{ profile.dateOfBirth }}</span></div>
+    <div class="profile-row"><label>KYC Status:</label><span>{{ profile.kycStatus }}</span></div>
+  </div>
+</section>
+ 
+<p *ngIf="!profile" class="no-data">No profile data available.</p>
+ 

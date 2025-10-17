@@ -1,0 +1,109 @@
+<!-- Top Navbar -->
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<nav class="navbar">
+  <div class="navbar-left">
+    <a routerLink="/" class="brand-link">Smart Banking</a>
+  </div>
+  <div class="navbar-right">
+    <i class="bi bi-bell-fill notification-icon" title="Notifications"></i>
+    <i class="bi bi-person-circle profile-icon" (click)="loadProfile()" title="View Profile"></i>
+    <button class="logout-button" (click)="logout()" title="Logout">
+      <i class="bi bi-box-arrow-right"></i>
+    </button>
+  </div>
+</nav>
+
+
+<!-- KYC Check -->
+<div *ngIf="!accountdata?.length; else dis"><h1>KYC PENDING</h1></div>
+<ng-template #dis>
+  <div *ngIf="accountdata?.length > 0" class="dashboard-layout">
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="policy-highlight" *ngIf="highlightedPolicy">
+  <h4>{{ highlightedPolicy.label }}</h4>
+  <p>{{ highlightedPolicy.message }}</p>
+</div>
+
+      <nav class="sidebar-nav">
+        <a (click)="Transfer()" class="nav-link">Transfer</a>
+        <a (click)="deposit()" class="nav-link">Deposit</a>
+        <a (click)="withdraw()" class="nav-link">Withdraw</a>
+        <a (click)="loadProfile()" class="nav-link">View Profile</a>
+        <a (click)="loadTransactions()" class="nav-link">Transactions</a>
+        <a (click)="loadSame()" class="nav-link">Dashboard</a>
+      </nav>
+      
+
+    </aside>
+
+    <!-- Content Panel -->
+    <section class="content-panel">
+      <div *ngIf="showProfile">
+        <app-viewprofile></app-viewprofile>
+      </div>
+      <div *ngIf="showTransfer">
+        <app-transfer [fromAccountNumber]="accountdata[0].accountNumber"></app-transfer>
+      </div>
+      <div *ngIf="showDeposit">
+        <app-deposit [accountId]="accountdata[0].id"></app-deposit>
+      </div>
+      <div *ngIf="showDashboard">
+        <app-dashboard [accountId]="accountdata[0].id"></app-dashboard>
+      </div>
+      <div *ngIf="showWithdraw">
+        <app-withdraw [accountId]="accountdata[0].id"></app-withdraw>
+      </div>
+      <div *ngIf="showTransactions">
+        <app-transactions [accountId]="accountdata[0].id"></app-transactions>
+      </div>
+    
+      
+      <!-- Default Welcome Panel -->
+     <!-- Default Welcome Panel -->
+<div *ngIf="!showProfile && !showTransfer && !showDeposit && !showWithdraw && !showTransactions && !showDashboard" class="welcome-panel">
+  <h2>Welcome, {{ accountdata[0].user.username }} 👋</h2>
+  <p>Here’s a quick look at your account:</p>
+
+  <div class="summary-grid">
+    <div class="summary-card">
+      <h4>Account Type</h4>
+      <p>{{ accountdata[0].accountType }}</p>
+    </div>
+    <div class="summary-card">
+      <h4>Account Number</h4>
+      <p>{{ accountdata[0].accountNumber }}</p>
+    </div>
+    <div class="summary-card">
+      <h4>Current Balance</h4>
+      <p>₹{{ accountdata[0].balance }}</p>
+    </div>
+  </div>
+
+  <!-- 👇 Dashboard Chart Component -->
+  <app-dashboard [accountId]="accountdata[0].id"></app-dashboard>
+
+  <!-- 👇 Suggestions and Tips moved below chart -->
+  <div class="suggestions">
+    <h3>Suggestions for You</h3>
+    <ul>
+      <li>📈 Set a monthly savings goal to track progress.</li>
+      <li>🔍 Review your last 5 transactions for accuracy.</li>
+      <li>🛡️ Enable two-factor authentication for added security.</li>
+    </ul>
+  </div>
+
+  <div class="smart-tips">
+    <h3>Smart Tips 💡</h3>
+    <ul>
+      <li>🔒 Never share your OTP or password.</li>
+      <li>💳 Update your debit card PIN every 6 months.</li>
+      <li>📈 Monitor your balance trends weekly.</li>
+    </ul>
+  </div>
+</div>
+
+    </section>
+  </div>
+</ng-template>

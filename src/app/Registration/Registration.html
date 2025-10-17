@@ -1,0 +1,24 @@
+<section class="register-container">
+  <h2>Create Your SmartBanking Account</h2>
+  <form (ngSubmit)="registerUser()" #registerForm="ngForm" class="register-form">
+    
+    <div class="form-group">
+      <label for="username">Username <span class="required">*</span></label>
+      <input name="username" [(ngModel)]="username" #usernameRef="ngModel" required placeholder="Enter your username" />
+      <div class="error" *ngIf="usernameRef.invalid && usernameRef.touched">Username is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password <span class="required">*</span></label>
+      <input name="password" [(ngModel)]="password" #passwordRef="ngModel" type="password" required minlength="6" placeholder="Enter a secure password" />
+      <div class="error" *ngIf="passwordRef.invalid && passwordRef.touched">
+        Password must be at least 6 characters.
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    </div>
+  </form>
+</section>
+<router-outlet></router-outlet>

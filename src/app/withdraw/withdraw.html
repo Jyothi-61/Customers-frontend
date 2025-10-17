@@ -1,0 +1,13 @@
+<section class="withdraw-container">
+  <h2>💸 Withdraw Funds</h2>
+
+  <form (ngSubmit)="withdrawFunds()" #withdrawForm="ngForm" class="withdraw-form">
+    <div class="form-group">
+      <label for="amount">Amount</label>
+      <input type="number" name="amount" [(ngModel)]="amount" required placeholder="Enter amount to withdraw" />
+    </div>
+
+    <button type="submit" [disabled]="withdrawForm.invalid">Withdraw</button>
+    <p class="status-message">{{ statusMessage }}</p>
+  </form>
+</section>
