@@ -86,7 +86,7 @@ export class Createprofile implements OnInit {
             this.submissionMessage = '❌ Error fetching profile.';
           }
         });
-      }, 30000);
+      }, 3000);
     },
     error: (er) => {
       console.error('❌ Profile creation failed:', er);
